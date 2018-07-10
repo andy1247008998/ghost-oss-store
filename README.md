@@ -1,3 +1,7 @@
+# 中文说明
+明人不说暗话，用阿里云OSS的肯定懂中文。之所以fork这个插件是因为它太老了，以至于连安装教程都过时。
+
+
 # Ghost Aliyun OSS Storage
 
 [![NPM version][npm-image]][npm-url]
@@ -40,6 +44,12 @@ module.exports = require('ghost-oss-store');
 
 In order to replace the storage module, the basic requirements are:
 
+错了，正确的位置是/content/adapter/storage。
+```
+mkdir -p /var/www/ghost/content/adapter/storage/oss-store
+cd /var/www/ghost/content/adapter/storage/oss-store
+git clone https://github.com/MT-Libraries/ghost-oss-store ./
+```
 - Create a new folder inside `/content` called `/storage`
 
 - Clone this repo to `/storage`
@@ -57,7 +67,7 @@ In order to replace the storage module, the basic requirements are:
   ```
 
 ## Configuration
-
+### 错了,这里是config.production.json。一定要注意这是JSON啊，你添加一个新字段怎么能不给前一个末尾补上逗号呢？你要是非要补上中文逗号那我也没辙。
 In your `config.js` file, you'll need to add a new `storage` block to whichever environment you want to change:
 
 ```javascript
