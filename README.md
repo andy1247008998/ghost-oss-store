@@ -44,10 +44,10 @@ module.exports = require('ghost-oss-store');
 
 In order to replace the storage module, the basic requirements are:
 
-错了，正确的位置是/content/adapter/storage。
+错了，正确的位置是/content/adapters/storage。
 ```
-mkdir -p /var/www/ghost/content/adapter/storage/oss-store
-cd /var/www/ghost/content/adapter/storage/oss-store
+mkdir -p /var/www/ghost/content/adapters/storage/oss-store
+cd /var/www/ghost/content/adapters/storage/oss-store
 git clone https://github.com/MT-Libraries/ghost-oss-store ./
 ```
 - Create a new folder inside `/content` called `/storage`
