@@ -46,9 +46,9 @@ In order to replace the storage module, the basic requirements are:
 
 错了，正确的位置是/content/adapters/storage。
 ```
-mkdir -p /var/www/ghost/content/adapters/storage/oss-store
-cd /var/www/ghost/content/adapters/storage/oss-store
-git clone https://github.com/MT-Libraries/ghost-oss-store ./
+mkdir -p /var/www/ghost/content/adapters/storage/
+cd /var/www/ghost/content/adapters/storage/
+git clone https://github.com/MT-Libraries/ghost-oss-store
 ```
 - Create a new folder inside `/content` called `/storage`
 
@@ -70,10 +70,11 @@ git clone https://github.com/MT-Libraries/ghost-oss-store ./
 ### 错了,这里是config.production.json。一定要注意这是JSON啊，你添加一个新字段怎么能不给前一个末尾补上逗号呢？你要是非要补上中文逗号那我也没辙。
 In your `config.js` file, you'll need to add a new `storage` block to whichever environment you want to change:
 
+
 ```javascript
 storage: {
-  active: 'oss-store',
-  'oss-store': {
+  active: 'ghost-oss-store',
+  'ghost-oss-store': {
     accessKeyId: 'accessKeyId',
     accessKeySecret: 'accessKeySecret',
     bucket: 'bucket',
