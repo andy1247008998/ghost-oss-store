@@ -4,7 +4,7 @@ var path = require('path')
 var Promise = require('bluebird')
 var OSS = require('ali-oss').Wrapper
 var utils = require('./utils')
-
+const urlParse = require('url').parse;
 var baseStore = require('ghost-storage-base')
 
 class OssStore extends baseStore {
@@ -15,6 +15,7 @@ class OssStore extends baseStore {
   }
 
   save (file, targetDir) {
+    console.log("Hello World1");
     var client = this.client
     var origin = this.options.origin  
     var key = this.getFileKey(file)
@@ -40,6 +41,7 @@ class OssStore extends baseStore {
   }
 
   exists (filename) {
+    console.log("Hello World2");
     // console.log('exists',filename)
     var client = this.client  
   
@@ -55,13 +57,15 @@ class OssStore extends baseStore {
     })
   }
   
-  serve (options) {  
+  serve (options) {
+    console.log("Hello World3");
     return function (req, res, next) {
       next();
     }
   }
   
   delete (filename) {
+    console.log("Hello World4");
     var client = this.client  
   
     // console.log('del',filename)
@@ -76,11 +80,22 @@ class OssStore extends baseStore {
     })
   }
 
-  read () {
+  read(options) {
+   console.log("Hello World5");
+   options = options || {};
 
+    const client = this.client;
+    const key = urlParse(options.path).pathname.slice(1);
+
+    return new Promise(function(resolve, reject) {
+
+        resolve(content);
+  
+    });
   }
  
   getFileKey (file) {
+    console.log("Hello World6");
     var keyOptions = this.options.fileKey
   
     if (keyOptions) {
