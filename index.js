@@ -15,15 +15,20 @@ class OssStore extends baseStore {
   }
 
   save (file, targetDir) {
-    console.log("Hello World1");
+    console.log("saving files");
     var client = this.client
-    var origin = this.options.origin  
+    var origin = this.options.origin
     var key = this.getFileKey(file)
+    var options = this.options.put.options
+
+    var gzip = zlib.createGzip();
+    var r = fs.createReadStream(file.path);
 
     return new Promise(function (resolve, reject) {
       return client.put(
-        key, 
-        fs.createReadStream(file.path)
+        key,
+        r.pipe(gzip),
+        options
       )
       .then(function (result) {
         // console.log(result)
@@ -31,7 +36,7 @@ class OssStore extends baseStore {
           resolve(utils.joinUrl(origin, result.name))
         }else{
           resolve(result.url)
-        }      
+        }
       })
       .catch(function (err) {
         // console.log(err)
