@@ -6,6 +6,7 @@ var OSS = require('ali-oss').Wrapper
 var utils = require('./utils')
 const urlParse = require('url').parse;
 var baseStore = require('ghost-storage-base')
+var zlib = require('zlib')
 
 class OssStore extends baseStore {
   constructor (config) {
